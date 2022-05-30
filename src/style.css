@@ -9,6 +9,11 @@ body {
     font-family: 'Karla', sans-serif;
 }
 
+#root {
+    display: flex;
+    justify-content: center;
+}
+
 main {
     background-color: #F5F5F5;
     height: 400px;
