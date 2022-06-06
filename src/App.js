@@ -16,7 +16,13 @@ import Confetti from "react-confetti";
  * To Do?
  * - Make it live
  */
+
 function App() {
+
+  const [dices, setDices] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false);
+  const [roll, setRoll] = useState(0)
+
   function generateNewDie() {
     return {
       value: Math.floor(Math.random() * 6 + 1),
@@ -32,9 +38,6 @@ function App() {
     }
     return newDices;
   }
-
-  const [dices, setDices] = useState(allNewDice());
-  const [tenzies, setTenzies] = useState(false);
 
   useEffect(() => {
     // my solution:
@@ -57,6 +60,7 @@ function App() {
     if (allHeld && allSame) {
       console.log("YOU WIN");
       setTenzies(true);
+      localStorage.setItem("record", roll.toFixed())
     }
   }, [dices]);
 
@@ -72,6 +76,7 @@ function App() {
   function resetGame() {
     setTenzies(false);
     setDices(allNewDice());
+    setRoll(0)
   }
 
   function rollDice() {
@@ -80,6 +85,7 @@ function App() {
         !oldDice.isHeld ? generateNewDie() : oldDice
       );
     });
+    setRoll(oldRoll => oldRoll += 1)
   }
 
   function holdDice(id) {
@@ -103,8 +109,10 @@ function App() {
       className="roll-dice" 
       onClick={tenzies ? resetGame : rollDice}
       >
-        {tenzies ? "New Game" : "Roll"}
+        {tenzies ? "New Game" : "Roll " + roll}
+
       </button>
+      <h3>Last record: {localStorage.getItem("record")}x</h3>
     </main>
   );
 }

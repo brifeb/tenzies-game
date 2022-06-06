@@ -4,7 +4,8 @@
 
 body {
     margin: 0;
-    background-color: #0B2434;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,9,121,1) 35%, rgba(0,95,255,1) 100%);
     padding: 20px;
     font-family: 'Karla', sans-serif;
 }
