@@ -32,6 +32,12 @@ main {
     margin: 0;
 }
 
+.note {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .instructions {
     font-family: 'Inter', sans-serif;
     font-weight: 400;

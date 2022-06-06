@@ -62,7 +62,7 @@ function App() {
       setTenzies(true);
       localStorage.setItem("record", roll.toFixed())
     }
-  }, [dices]);
+  }, [dices, roll]);
 
   const diesElements = dices.map((dice) => (
     <Die
@@ -99,6 +99,7 @@ function App() {
   return (
     <main>
       {tenzies && <Confetti />}
+      <small className="note">Last roll: {localStorage.getItem("record")}x</small>
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
@@ -109,10 +110,9 @@ function App() {
       className="roll-dice" 
       onClick={tenzies ? resetGame : rollDice}
       >
-        {tenzies ? "New Game" : "Roll " + roll}
+        {tenzies ? "New Game" : "Roll "}
 
       </button>
-      <h3>Last record: {localStorage.getItem("record")}x</h3>
     </main>
   );
 }
